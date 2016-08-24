@@ -10,5 +10,3 @@ bzips/*.phar
 # Source archives for Suhosin.
 bzips/*.patch.gz
 
-# Customizations.
-custom/*

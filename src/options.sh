@@ -30,6 +30,16 @@ configoptions="\
 --enable-zip \
 --with-zlib \
 --with-gettext \
+--with-openssl \
+--with-curl \
+--with-libdir=/lib/x86_64-linux-gnu \
+--disable-rpath \
+--with-mysql \
+--with-mysqli \
+--with-pdo-mysql \
+--with-mcrypt \
+--with-gd \
+--with-jpeg-dir=/usr/lib/x86_64-linux-gnu \
 "
 
 # --enable-sqlite-utf8 was removed starting with PHP 5.4.0.
@@ -38,6 +48,13 @@ if [ $? -eq 0 ]; then
 configoptions="\
 $configoptions \
 --enable-sqlite-utf8 \
+"
+fi
+test $vmajor -eq 5 -a $vminor -lt 3
+if [ $? -eq 0 ]; then
+configoptions="\
+$configoptions \
+--enable-fastcgi \
 "
 fi
 

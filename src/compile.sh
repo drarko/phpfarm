@@ -42,6 +42,8 @@ fi
 srcdir="php-$VERSION"
 #directory with source archives
 bzipsdir='bzips'
+#patchs directory
+patchdir='patch'
 #directory phps get installed into
 instbasedir="`readlink -f "$basedir/../inst"`"
 #directory this specific version gets installed into
@@ -126,6 +128,10 @@ fi
 #read customizations
 source 'options.sh' "$VERSION" "$VMAJOR" "$VMINOR" "$VPATCH"
 cd "$srcdir"
+
+# apply patchs if any
+patch -p1 < ../$patchdir/$VERSION-*
+
 
 #only configure/make during the first install of a new version
 #or after some change occurred in customizations.
