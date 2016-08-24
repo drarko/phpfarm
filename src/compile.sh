@@ -130,6 +130,7 @@ source 'options.sh' "$VERSION" "$VMAJOR" "$VMINOR" "$VPATCH"
 cd "$srcdir"
 
 # apply patchs if any
+shopt -s nullglob
 for f in ../$patchdir/$VERSION-*.patch
 do
 	patch -p1 < $f
