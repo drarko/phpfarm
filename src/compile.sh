@@ -130,8 +130,10 @@ source 'options.sh' "$VERSION" "$VMAJOR" "$VMINOR" "$VPATCH"
 cd "$srcdir"
 
 # apply patchs if any
-patch -p1 < ../$patchdir/$VERSION-*
-
+for f in ../$patchdir/$VERSION-*.patch
+do
+	patch -p1 < $f
+done
 
 #only configure/make during the first install of a new version
 #or after some change occurred in customizations.
